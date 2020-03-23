@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B0E85CF4-5A5F-4DDF-9724-06C0BA0A389D"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31717AFC-87D1-4BAC-BBCC-DABD4CE724EC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HttpTest/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "sendJsonData(message:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "31717AFC-87D1-4BAC-BBCC-DABD4CE724EC - 6cf3a3173c469727"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HttpTest.ViewController.sendJsonData(message: Swift.String) -&gt; ()"
+                  moduleName = "HttpTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bong/workspace/web/HttpTest/HttpTest/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "1790">
+               </Location>
+               <Location
+                  uuid = "31717AFC-87D1-4BAC-BBCC-DABD4CE724EC - 363ac816bdde2fd0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in HttpTest.ViewController.sendJsonData(message: Swift.String) -&gt; ()"
+                  moduleName = "HttpTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bong/workspace/web/HttpTest/HttpTest/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "177">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
