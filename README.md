@@ -119,5 +119,64 @@ ios - http 통신 프로젝트
      3) background session
      ```
 
-     
+
+
+이대로 실행하면 아래와 같이 에러에 대한 설명이 나온다.
+
+![image-20200323232636325](file:///Users/bong/Library/Application%20Support/typora-user-images/image-20200323232636325.png?lastModify=1585233766?lastModify=1585321211)
+
+- 읽어보면 ~~ Trnasport Security policy requires~~ 이렇게 나오는데, 이는 https을 표준으로 사용하는 Xcode에서 http 로 시작하는 페이지에 대해 허용해주지 않아서 발생하는 에러임을 알 수 있다. 
+
+- 이를 해결하기 위해서는 info.plist에 다음 딕셔너리를 추가해주어야 한다.
+
+  ![image-20200323232847894](file:///Users/bong/Library/Application%20Support/typora-user-images/image-20200323232847894.png?lastModify=1585233766?lastModify=1585321211)
+
+
+
+설정해주면 데이터 전송을 확인할 수 있다!
+
+
+
+
+
+
+
+## 2. 서버에서 Post 로 데이터 수신하기
+
+*위에서는 앱에서 서버로 데이터를 보냈고, 서버에도 데이터를 받을 수 있는 코드가 있어야지 제대로 전송되어있음을 확인할 수 있다. 이전과 마찬가지로 서버는 node.js로 구현하였고, 데이터 수신을 위한 최소한의 코드만 작성하였다.*
+
+```javascript
+var express  = require('express');  // express framework 사용
+var hostname = '172.30.1.28';       // localhost
+var port     = 3000;                // 포트 번호
+var http     = require('http');     // node 내장 모듈 불러옴
+
+var app = express();
+var bodyParser = require('body-parser')     // post 사용을 위한 모듈
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
+
+console.log('Server running at http://'+hostname+':'+port);
+
+
+// 들어오는 데이터 읽기
+var server = app.listen(port, function () {
+    console.log('읽음');
+});
+
+
+// post method connect
+app.post('/', function (req, res) {
+    console.log('post 메서드 받음 ')
+    console.log(req.body)
+});
+```
+
+- node.js에서 express를 이용하는 POST 통신 방법은 GET 방식과 다르게 `body-parser` 라는 모듈을 추가로 사용해 주어야 한다.
+
+- `app.listen(port, func(){ })` 은 해당 포트로 들어오는 데이터를 읽는 부분이다.
+
+- `app.post()` 와 같은 방법을 이용하면, req 파라미터에 http 통신으로 들어온 데이터가 저장되게 된다. 
+  Header / body 중 데이터는 body 에 들어가므로,  콘솔에 body를 출력하면 앱에서 보낸 json 데이터를 확인할 수 있다.
 
