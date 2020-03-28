@@ -15,12 +15,14 @@ console.log('Server running at http://'+hostname+':'+port);
 
 // 들어오는 데이터 읽기
 var server = app.listen(port, function () {
-    console.log('읽음');
+    console.log('읽음-3');
 });
 
 
 // post method connect
 app.post('/', function (req, res) {
     console.log('post 메서드 받음 ')
-    console.log(req.body)
+    console.log(req.body);
+
+    res.send({ status: 'SUCCESS' });
 });

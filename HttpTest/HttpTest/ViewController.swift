@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var dataLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,10 @@ class ViewController: UIViewController {
         
         sendJsonData(message: textField.text!)
     }
-   
+    @IBAction func clickedResponseBtn(_ sender: Any) {
+        
+    }
+    
     // 서버로 json 데이터 보내기
     func sendJsonData (message: String) {
         let dic: Dictionary = ["message": message]
@@ -30,8 +34,6 @@ class ViewController: UIViewController {
         guard let url = URL(string: "http://localhost:3000") else {
             return
         }
-        
-        let session = URLSession.shared
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -45,9 +47,22 @@ class ViewController: UIViewController {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept-Type")
         
+        let session = URLSession.shared
         session.dataTask(with: request, completionHandler: { (data, response, error) in
-            print("dataTask ㅇㅅㅇ")
-            }).resume()
+            // 데이터 수신
+            
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            }
+            
+            do {
+                let resultData = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
+                print(resultData)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }).resume()
         
     }
     
