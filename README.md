@@ -180,3 +180,52 @@ app.post('/', function (req, res) {
 - `app.post()` 와 같은 방법을 이용하면, req 파라미터에 http 통신으로 들어온 데이터가 저장되게 된다. 
   Header / body 중 데이터는 body 에 들어가므로,  콘솔에 body를 출력하면 앱에서 보낸 json 데이터를 확인할 수 있다.
 
+
+
+
+
+
+
+---
+
+### 서버에서 데이터 받기 (Node.js -> iOS)
+
+*많은 작업을 해줘야 되는 줄 알았는데 생각보다 간단했다.*
+
+1. Node.js
+
+   ```javascript
+   // post method connect
+   app.post('/', function (req, res) {
+       console.log('post 메서드 받음 ')
+       console.log(req.body);
+   
+       res.send({ status: 'SUCCESS' });
+   });
+   ```
+
+   - res.send() 메서드만 추가해주면 된다.
+     이때, 파라미터는 json 데이터를 넣어야 앱에서 json 형태로 받을 수 있음
+
+2. iOS
+
+   ```swift
+   session.dataTask(with: request, completionHandler: { (data, response, error) in
+               
+   	if error != nil {
+   		print(error?.localizedDescription)
+   		return
+   	}
+               
+   	do {
+   		let resultData = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
+   		print(resultData)
+   	} catch {
+   		print(error.localizedDescription)
+   	}
+   }).resume()
+   ```
+
+   - 별다른 소스코드 추가해줄 필요 없이 저 `session.dataTask` 메서드의 `data` 부분에 서버에서 보내는 데이터가 저장됨
+
+   ![image-20200329001902314](/Users/bong/Library/Application Support/typora-user-images/image-20200329001902314.png)

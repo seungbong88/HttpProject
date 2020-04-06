@@ -35,13 +35,27 @@
                                     <action selector="clickedTransferBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jp5-7m-ScV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72W-Nw-UWS">
+                                <rect key="frame" x="159" y="518" width="96" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Vyz-CB-YDh"/>
+                                    <constraint firstAttribute="width" constant="96" id="cMz-63-Vqa"/>
+                                </constraints>
+                                <state key="normal" title="Alamofire 전송"/>
+                                <connections>
+                                    <action selector="sendDataWithAlamofire:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rQm-6F-VUF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="72W-Nw-UWS" secondAttribute="trailing" constant="159" id="9Gm-tr-xuQ"/>
                             <constraint firstItem="DdN-NR-QP5" firstAttribute="top" secondItem="KtN-fR-O8j" secondAttribute="bottom" constant="20" id="C1s-1u-CW0"/>
                             <constraint firstItem="KtN-fR-O8j" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T2X-y0-KGY"/>
+                            <constraint firstItem="72W-Nw-UWS" firstAttribute="top" secondItem="DdN-NR-QP5" secondAttribute="bottom" constant="3" id="Yoi-0S-Kxv"/>
                             <constraint firstItem="KtN-fR-O8j" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dbA-K1-qg3"/>
                             <constraint firstItem="DdN-NR-QP5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h1e-kO-7yz"/>
+                            <constraint firstItem="72W-Nw-UWS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="vL6-De-lGi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

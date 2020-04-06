@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var dataLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        
     }
 
 
@@ -63,6 +65,28 @@ class ViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }).resume()
+        
+    }
+    
+    
+    
+    @IBAction func sendDataWithAlamofire(_ sender: Any) {
+        
+        let param = ["message": self.textField.text]
+        
+        guard let url = URL(string: "http://localhost:3000") else {
+            return
+        }
+        
+        AF.request(url,
+                   method: .post,
+                   parameters: param,
+                   encoder: JSONParameterEncoder.default,
+                   headers: ["Content-Type": "application/json", "Accept-Type":"application/json"],
+                   interceptor: nil)
+            .response { response in
+                print(response)
+            }
         
     }
     
