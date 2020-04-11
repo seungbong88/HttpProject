@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         
         let param = ["message": self.textField.text]
         
-        guard let url = URL(string: "http://localhost:3000") else {
+        guard let url = URL(string: "https://www.starbucks.co.kr/menu/productViewAjax.do?product_cd=9200000002672") else {
             return
         }
         
@@ -84,9 +84,10 @@ class ViewController: UIViewController {
                    encoder: JSONParameterEncoder.default,
                    headers: ["Content-Type": "application/json", "Accept-Type":"application/json"],
                    interceptor: nil)
-            .response { response in
-                print(response)
-            }
+            .responseJSON { response in
+                var value = String(data: response.data!, encoding: .utf8)                
+                print(value)
+        }
         
     }
     
